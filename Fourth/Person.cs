@@ -27,13 +27,12 @@ namespace Fourth
 
         }
 
-        public Person Input()
+        public void Input()
         {
             Console.Write("Enter person name: ");
             name = Console.ReadLine();
             Console.Write("Enter person birthday (yyyy): ");
             birthYear = DateTime.ParseExact(Console.ReadLine(), "yyyy", null);
-            return new Person(name, birthYear);
         }
 
         public void ChangeName(string name)
@@ -51,14 +50,16 @@ namespace Fourth
              Console.WriteLine(ToString());
         }
 
-        public static bool operator ==(Person person1, Person person2)
+        public static bool operator ==(Person a, Person b)
         {
-            return (person1.Name == person2.Name);
+            if (a.name == b.name) return true;
+            return false;
+        }
+        public static bool operator !=(Person a, Person b)
+        {
+            if (a.name != b.name) return false;
+            return true;
         }
 
-        public static bool operator !=(Person person1, Person person2)
-        {
-            return !(person1 == person2);
-        }
     }
 }

@@ -10,12 +10,15 @@ namespace Fourth
     {
         static void Main(string[] args)
         {
-            List<Person> person = new  List<Person>();
-            for (int i = 0; i < 1; i++)
+
+            Person[] person = new Person[3];
+            for (int i = 0; i < person.Length; i++)
             {
-                person.Add(new Person().Input());
+                person [i] = new Person();
+                person[i].Input();
             }
-            foreach(var s in person)
+
+            foreach (var s in person)
             {
                 if(s.Age()<16)
                 {
@@ -23,15 +26,22 @@ namespace Fourth
                 }
                 s.Output();
             }
-            
-            foreach(var l in person)
+                        
+            for (int i = 0; i < person.Length; i++)
             {
-                //if (l += l)
-                //{
-
-                //}
+                for (int j = 0; j < person.Length; j++)
+                {
+                    if (j == i) continue;
+                    if (person[i].Name == person[j].Name)
+                    {
+                        Console.WriteLine("This person has the same name: ");
+                        person[i].Output();
+                    }
+                }
             }
-            Console.ReadKey();
+            Console.Read();
+
+
         }
     }   
 }
